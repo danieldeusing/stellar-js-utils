@@ -13,7 +13,7 @@ export default class StellarOperations {
     return StellarSdk.Operation.payment(opts)
   }
 
-  static manageOfferOperation(buying, selling, amount, price, offerID = 0, sourcePublicKey = null) {
+  static manageOfferOperation(selling, buying, amount, price, offerID = 0, sourcePublicKey = null) {
     const opts = {
       selling: selling,
       buying: buying,
@@ -22,7 +22,7 @@ export default class StellarOperations {
       offerId: offerID,
       source: sourcePublicKey
     }
-    return StellarSdk.Operation.manageOffer(opts)
+    return StellarSdk.Operation.manageSellOffer(opts)
   }
 
   static setOptionsOperation(options, sourcePublicKey = null) {

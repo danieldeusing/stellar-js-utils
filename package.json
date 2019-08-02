@@ -19,7 +19,7 @@
     "javascript"
   ],
   "dependencies": {
-    "stellar-sdk": "^2.2.0",
+    "stellar-sdk": "^1.0.2",
     "axios": "^0.19.0",
     "@ledgerhq/hw-transport-u2f": "^4.68.2",
     "@ledgerhq/hw-app-str": "^4.68.2"

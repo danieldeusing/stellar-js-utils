@@ -1,7 +1,10 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
+  mode: 'production',
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -9,42 +12,43 @@ module.exports = {
     library: 'stellar-js-utils',
     libraryTarget: 'umd'
   },
+  target: 'node',
   externals: [
-    // without this, we'll get two copies of jquery and triggers will fail
-    // also package will be huge
-    'jquery',
-    'stellar-sdk',
-    'stellar-ledger-api'
+    "stellar-sdk", "axios"
+  ],
+  // added to kill all comments, remove if you don't care (16k smaller too)
+  optimization: {
+    minimizer: [new TerserPlugin({
+      terserOptions: {
+        cache: true,
+        parallel: true,
+        output: {
+          comments: false,
+          semicolons: false
+        }
+      }
+    })]
+  },
+  plugins: [
+    // new BundleAnalyzerPlugin(),
   ],
   module: {
     rules: [{
-        enforce: 'pre',
-        test: /.(vue|js)$/,
-        use: 'eslint-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.vue$/,
-        use: 'vue-loader'
-      },
-      {
-        test: /\.js$/,
-        use: [{
-          loader: 'babel-loader'
-        }],
-        exclude: /node_modules/,
+      enforce: 'pre',
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: "eslint-loader",
+        options: {
+          fix: true
+        }
       }
-    ]
-  },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        passes: 2
-      },
-      output: {
-        comments: false
-      }
-    })
-  ]
+    }, {
+      test: /\.js$/,
+      use: [{
+        loader: 'babel-loader'
+      }],
+      exclude: /node_modules/
+    }]
+  }
 }

@@ -1,31 +1,24 @@
-## Stellar JS Utils  
+## StellarKit JS Utils
+
+Build:
+
+    npm install
+    npm run dist
 
 ### High level calls to Stellar JS SDK
 
-Still a work in progress, UI not perfect yet, but everything should work fine.
+Collection of higher level Stellar APIs
 
-Includes:
-+ Donate dialog with Ledger nano support.
-+ Bifrost dialog for buying tokens.
-
-The UI uses Vuetify and VueJS, so these dialogs will only work within a vuetify v-app tag
-
-Don't worry Vue and Vuetify are awesome and it should be simple to integrate within any website.
-
-Check out https://vuetifyjs.com for more details.
-
-Build:
-```
-yarn dist
-```
+See [Stellar Client](https://github.com/StellarKit/stellar-client) for an example of using this package
 
 Pull requests welcome!
 
+Disclaimer: We are not affiliated with, or sponsored or endorsed by, the Stellar Development Foundation.
+
 ### Donations
+
 If you like the code, a donation would be appreciated. Even a single XLM!
 
 Click here for the [`donation page`](https://stellarkit.io/#/donate). Ledger nano supported!
 
-```
-XLM: GCYQSB3UQDSISB5LKAL2OEVLAYJNIR7LFVYDNKRMLWQKDCBX4PU3Z6JP
-```
+    XLM: GBJC6AF4I5FUTYMG4CXC3V2NYMIQANBRB4UQYY3M2RRZCXCNLFR7TN7J

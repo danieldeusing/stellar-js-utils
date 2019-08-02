@@ -35,7 +35,7 @@ module.exports = {
     'camelcase': 2,
     'comma-dangle': 2,
     'no-array-constructor': 2,
-    'no-bitwise': 2,
+    // 'no-bitwise': 2,
     'no-multi-assign': 2,
     'no-tabs': 2,
     'quotes': [2, 'single', {
@@ -73,7 +73,7 @@ module.exports = {
       'vars': 'all',
       'args': 'none'
     }],
-    'eol-last': 2,
+    // 'eol-last': 2,
     'space-before-blocks': 2,
     'no-self-compare': 2,
     'no-lone-blocks': 2,

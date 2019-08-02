@@ -1,9 +1,15 @@
-const StellarSdk = require('stellar-sdk')
+import * as StellarSdk from 'stellar-sdk'
 
-export default class StellarAPIServer {
-  constructor(serverURL, testnet, serverOptions) {
+export default class HorizonServer {
+  constructor(serverURL, testnet = true, serverOptions) {
     this._serverURL = serverURL
     this._testnet = testnet
+
+    if (this._testnet) {
+      StellarSdk.Network.useTestNetwork()
+    } else {
+      StellarSdk.Network.usePublicNetwork()
+    }
 
     this._server = new StellarSdk.Server(serverURL, serverOptions)
   }
@@ -19,7 +25,7 @@ export default class StellarAPIServer {
     return this._server
   }
 
-  testnet() {
+  isTestnet() {
     return this._testnet
   }
 
